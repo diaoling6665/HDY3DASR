@@ -1,0 +1,3 @@
+upload_server: "https://example.com/upload"
+model_path: "funasr/model/path"
+3d_speaker_repo: "./3D-Speaker"
