@@ -63,7 +63,6 @@ def identify(audio_path: str, top_k: int = 1) -> List[Tuple[str, float]]:
 
             sys.executable, str(script),
 
-
             "--model_id", MODEL_ID,
             "--wavs", audio_path,
             "--local_model_dir", tmpdir,
