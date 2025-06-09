@@ -1,5 +1,7 @@
 funasr
 modelscope
 soundfile
+# datasets 版本过旧会导致 infer_diarization.py 运行失败
+datasets>=2.19.0
 # 从源码安装 3D-Speaker
 -e git+https://github.com/alibaba-damo-academy/3D-Speaker.git#egg=3d_speaker
