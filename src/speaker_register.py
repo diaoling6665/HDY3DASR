@@ -1,6 +1,9 @@
 import json
 import subprocess
 import tempfile
+
+import sys
+
 from pathlib import Path
 from typing import List, Tuple
 
@@ -32,7 +35,7 @@ def register(name: str, audio_path: str):
     out_dir.mkdir(exist_ok=True)
     emb_path = out_dir / f"{name}.npy"
     cmd = [
-        "python", str(script),
+        sys.executable, str(script),
         "--model_id", MODEL_ID,
         "--wavs", audio_path,
         "--local_model_dir", str(out_dir),
@@ -57,7 +60,10 @@ def identify(audio_path: str, top_k: int = 1) -> List[Tuple[str, float]]:
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cmd = [
-            "python", str(script),
+
+            sys.executable, str(script),
+
+
             "--model_id", MODEL_ID,
             "--wavs", audio_path,
             "--local_model_dir", tmpdir,
