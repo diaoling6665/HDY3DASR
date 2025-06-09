@@ -1,7 +1,9 @@
 import json
 import subprocess
 import tempfile
+
 import sys
+
 from pathlib import Path
 from typing import List, Tuple
 
@@ -58,7 +60,10 @@ def identify(audio_path: str, top_k: int = 1) -> List[Tuple[str, float]]:
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cmd = [
+
             sys.executable, str(script),
+
+
             "--model_id", MODEL_ID,
             "--wavs", audio_path,
             "--local_model_dir", tmpdir,
