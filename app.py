@@ -4,7 +4,7 @@ from pathlib import Path
 from src.asr_funasr import asr_transcribe
 from src.diarization_3dspeaker import diarize
 from src.merge_asr_diarization import merge_results
-from src.speaker_register import register
+from src.speaker_register import register, identify
 
 
 def main():
@@ -14,7 +14,8 @@ def main():
         print("2) 说话人分离")
         print("3) 合并 ASR 与分段")
         print("4) 注册发言人")
-        print("5) 退出")
+        print("5) 识别发言人")
+        print("6) 退出")
         choice = input("输入编号: ").strip()
 
         if choice == "1":
@@ -41,6 +42,14 @@ def main():
             register(name, audio)
             print("注册完成")
         elif choice == "5":
+            audio = input("请输入待识别音频路径: ").strip()
+            results = identify(audio)
+            if results:
+                for n, s in results:
+                    print(f"{n}: {s:.4f}")
+            else:
+                print("未匹配到说话人")
+        elif choice == "6":
             break
         else:
             print("无效选择，请重新输入")
