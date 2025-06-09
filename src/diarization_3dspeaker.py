@@ -1,6 +1,7 @@
 import json
 import subprocess
 import tempfile
+import sys
 from pathlib import Path
 
 
@@ -13,7 +14,7 @@ def diarize(audio_path: str, include_overlap: bool = False, hf_token: str | None
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cmd = [
-            "python", str(script),
+            sys.executable, str(script),
             "--wav", audio_path,
             "--out_dir", tmpdir,
             "--out_type", "json",
